@@ -1,0 +1,15 @@
+from src.main.api.models.base_model import BaseModel
+from src.main.api.models.create_account_response import CreateAccountResponse
+from src.main.api.requsets.requester import Requester
+import requests
+
+
+class CreateAccountRequester(Requester):
+    def post(self, mode=None) -> CreateAccountResponse:
+        url=f"{self.base_url}/account/create"
+        response = requests.post(
+            url=url,
+            headers=self.headers
+        )
+        self.response_spec(response)
+        return CreateAccountResponse(**response.json())

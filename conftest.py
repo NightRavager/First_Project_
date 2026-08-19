@@ -1,0 +1,36 @@
+from src.main.api.fixtures.api_fixture import *
+from src.main.api.fixtures.object_fixture import *
+from src.main.api.fixtures.user_fixture import *
+from src.main.api.fixtures.user_credit_fixture import *
+from src.main.api.fixtures.admin_credentials_fixture import *
+from src.main.api.fixtures.db_fixture import *
+"""import pytest
+from src.classes.api_manager import ApiManager
+
+import logging
+from typing import List, Any
+import pytest
+from src.classes.api_manager import ApiManager
+from src.main.api.models.create_user_response import CreateUserResponse
+
+
+
+@pytest.fixture
+def api_manager(created_obj):
+    return ApiManager(created_obj)
+
+@pytest.fixture
+def created_obj():
+    objects: List[Any] = []
+    yield objects
+    clean_user(objects)
+
+def clean_user(objects: List[Any]):
+    api_manager = ApiManager(objects)
+    for u in objects:
+        if isinstance(u, CreateUserResponse):
+            api_manager.admin_steps.delete_user(u.id)
+        else:
+            logging.warning(f"Error in delete user_id: {u.id}")
+
+"""
