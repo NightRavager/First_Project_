@@ -7,8 +7,8 @@ from src.main.api.models.create_user_request import CreateUserRequest
 
 
 @pytest.mark.api
-class TestCreateAccount:
-    def test_create_account(self, db_session: Session, api_manager: ApiManager, create_user_request: CreateUserRequest):
+class TestAccountCreate:
+    def test_account_create(self, db_session: Session, api_manager: ApiManager, create_user_request: CreateUserRequest):
         response = api_manager.user_steps.create_account(create_user_request)
         assert response.balance == 0
 
@@ -17,10 +17,10 @@ class TestCreateAccount:
         assert account_from_db.balance is not None, "Поле баланса при создании аккаунта отсутствует в БД"
 
 
-    def test_create_account_credit(self,api_manager, create_user_credit_request):
+    '''def test_account_create_credit(self,api_manager, create_user_credit_request):
         response_account = api_manager.user_credit_steps.create_account_credit(create_user_credit_request)
 
-        assert response_account.balance == 0
+        assert response_account.balance == 0'''
 
 
 

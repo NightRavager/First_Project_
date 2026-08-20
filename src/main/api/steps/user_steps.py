@@ -1,8 +1,7 @@
-from src.main.api.fixtures.user_fixture import create_user_request
 from src.main.api.foundation.endpoint import Endpoint
 from src.main.api.foundation.requesters.validate_crud_requester import ValidateCrudRequester
 from src.main.api.foundation.requesters.crud_requester import CrudRequester
-from src.main.api.models.account_deposit_request import AccountDepositRequest
+from src.main.api.models.account_deposit_request_valid import AccountDepositRequestValid
 from src.main.api.models.account_transfer_request import AccountTransferRequest
 from src.main.api.models.create_user_credit_request import CreateUserCreditRequest
 from src.main.api.models.create_user_request import CreateUserRequest
@@ -21,7 +20,7 @@ class UserSteps(BaseSteps):
         ).post()
         return response
 
-    def account_deposit(self, create_user_request: CreateUserRequest, account_deposit_request: AccountDepositRequest):
+    def account_deposit(self, create_user_request: CreateUserRequest, account_deposit_request: AccountDepositRequestValid):
         response = ValidateCrudRequester(
             RequestSpecs.auth_headers(username=create_user_request.username, password=create_user_request.password),
             Endpoint.ACCOUNT_DEPOSIT,
@@ -44,9 +43,9 @@ class UserSteps(BaseSteps):
             ResponseSpecs.request_unprocessable_entity()
         ).post(account_transfer_request)
 
-    def account_deposit_invalid_400(self, create_user_request: CreateUserRequest, account_deposit_request: AccountDepositRequest):
+    def account_deposit_invalid_404(self, create_user_request: CreateUserRequest, account_deposit_request):
         CrudRequester(
             RequestSpecs.auth_headers(username=create_user_request.username, password=create_user_request.password),
             Endpoint.ACCOUNT_DEPOSIT,
-            ResponseSpecs.request_bad()
+            ResponseSpecs.request_not_found()
         ).post(account_deposit_request)

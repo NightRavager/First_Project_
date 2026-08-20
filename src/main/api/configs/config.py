@@ -6,11 +6,11 @@ class Config:
     _isinstance = None
     _dictionary = {}
 
-    def __new__(cls):
+    def __new__(cls, file_name: str = 'urls.properties'):
         if cls._isinstance is None:
             cls._isinstance = super(Config, cls).__new__(cls)
 
-            config_path = Path(__file__).parents[4]/'resources'/'urls.properties'
+            config_path = Path(__file__).parents[4]/'resources'/file_name
 
             if not config_path.exists():
                 raise FileNotFoundError(f"Config path not found: {config_path}")

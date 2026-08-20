@@ -22,9 +22,10 @@ class UserCreditSteps(BaseSteps):
         ).post()
         return response
 
-    def create_credit(self, create_user_credit_request: CreateUserCreditRequest, credit_request: CreateCreditRequest):
+    def create_credit(self, create_user_request: CreateUserCreditRequest, credit_request: CreateCreditRequest):
+
         response = ValidateCrudRequester(
-            RequestSpecs.auth_headers(username=create_user_credit_request.username, password=create_user_credit_request.password,),
+            RequestSpecs.auth_headers(username=create_user_request.username, password=create_user_request.password),
             Endpoint.REQUEST_CREDIT,
             ResponseSpecs.request_created()
         ).post(credit_request)
@@ -39,7 +40,7 @@ class UserCreditSteps(BaseSteps):
         ).post(credit_repay_request)
         return response
 
-    def credit_repay_invalid(self,create_user_credit_request: CreateUserCreditRequest, credit_repay_request: CreditRepayRequest):
+    def credit_repay_invalid_422(self,create_user_credit_request: CreateUserCreditRequest, credit_repay_request: CreditRepayRequest):
         CrudRequester(
             RequestSpecs.auth_headers(username=create_user_credit_request.username,
                                       password=create_user_credit_request.password, ),
@@ -48,7 +49,7 @@ class UserCreditSteps(BaseSteps):
         ).post(credit_repay_request)
 
 
-    def create_credit_invalid(self, create_user_credit_request: CreateUserCreditRequest, credit_request: CreateCreditRequest):
+    def create_credit_invalid_404(self, create_user_credit_request: CreateUserCreditRequest, credit_request: CreateCreditRequest):
         CrudRequester(
             RequestSpecs.auth_headers(username=create_user_credit_request.username, password=create_user_credit_request.password,),
             Endpoint.REQUEST_CREDIT,

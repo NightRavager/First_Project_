@@ -2,7 +2,7 @@ from dataclasses import dataclass
 from enum import Enum
 from typing import Optional, Type
 
-from src.main.api.models.account_deposit_request import AccountDepositRequest
+from src.main.api.models.account_deposit_request_valid import AccountDepositRequestValid
 from src.main.api.models.account_deposit_response import AccountDepositResponse
 from src.main.api.models.account_transfer_request import AccountTransferRequest
 from src.main.api.models.account_transfer_response import AccountTransferResponse
@@ -72,7 +72,7 @@ class Endpoint(Enum):
     )
 
     ACCOUNT_DEPOSIT = EndpointConfiguration(
-        request_model=AccountDepositRequest,
+        request_model=AccountDepositRequestValid,
         url="/account/deposit",
         response_model=AccountDepositResponse
     )
