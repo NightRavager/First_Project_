@@ -4,7 +4,7 @@ from src.main.api.fixtures.user_fixture import *
 from src.main.api.fixtures.user_credit_fixture import *
 from src.main.api.fixtures.admin_credentials_fixture import *
 from src.main.api.fixtures.db_fixture import *
-"""import pytest
+import pytest
 from src.classes.api_manager import ApiManager
 
 import logging
@@ -32,5 +32,3 @@ def clean_user(objects: List[Any]):
             api_manager.admin_steps.delete_user(u.id)
         else:
             logging.warning(f"Error in delete user_id: {u.id}")
-
-"""
