@@ -1,7 +1,5 @@
-from src.main.api.configs.config import Config
 from src.main.api.models.login_user_request import LoginUserRequest
 import requests
-
 from src.main.api.models.login_user_response import LoginUserResponse
 
 
@@ -31,6 +29,6 @@ class RequestSpecs:
         raise Exception("Failed to login")
 
     @staticmethod
-    def unauth_headers():
+    def un_auth_headers():
         return RequestSpecs.base_headers()
 

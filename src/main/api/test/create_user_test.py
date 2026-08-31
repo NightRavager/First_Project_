@@ -14,13 +14,18 @@ class TestCreateUser:
         "create_user_request",
         [RandomModelGenerator.generate(CreateUserRequest)]
     )
-    def test_create_user_valid(self, api_manager: ApiManager, create_user_request: CreateUserRequest, db_session: Session):
+    def test_create_user_valid(self, api_manager: ApiManager,
+                               create_user_request: CreateUserRequest,
+                               db_session: Session):
         response = api_manager.admin_steps.create_user(create_user_request)
 
-        assert create_user_request.username == response.username
-        assert create_user_request.role == response.role
+        assert create_user_request.username == response.username, 'Имя пользователя не совпадает с ответом от сервера'
+        assert create_user_request.role == response.role, 'Роль пользователя не совпадает с ответом от сервера'
 
         user_from_db = User.get_user_by_username(db_session, create_user_request.username)
+
+        assert user_from_db is not None, f"Кредит с id={response.creditId} не найден в БД"
+
         assert user_from_db.username == create_user_request.username, 'Созданного пользователя нет в БД'
 
 
@@ -38,7 +43,10 @@ class TestCreateUser:
             ("Maxx6", "PAS!SWRRD"),
         ]
     )
-    def test_create_user_invalid(self,db_session: Session, username: str, password: str, api_manager: ApiManager):
+    def test_create_user_invalid(self,db_session: Session,
+                                 username: str,
+                                 password: str,
+                                 api_manager: ApiManager):
         create_user_request = CreateUserRequest(username=username, password=password, role="ROLE_USER")
 
         api_manager.admin_steps.create_invalid_user(create_user_request)

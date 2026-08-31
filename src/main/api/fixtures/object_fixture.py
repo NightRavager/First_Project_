@@ -1,4 +1,3 @@
-import logging
 from typing import List, Any
 import pytest
 from src.classes.api_manager import ApiManager

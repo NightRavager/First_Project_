@@ -1,0 +1,9 @@
+#utils/constants
+class CreditData:
+    DEFAULT_AMOUNT_BALANCE = 5000
+    DEFAULT_AMOUNT_TRANSACTION = 1000
+    DEFAULT_TERM_MONTHS = 12
+
+class UserInfo:
+    ADMIN_USERNAME = "admin"
+    ADMIN_PASSWORD = "123456"

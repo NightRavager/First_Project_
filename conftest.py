@@ -2,10 +2,10 @@ from src.main.api.fixtures.api_fixture import *
 from src.main.api.fixtures.object_fixture import *
 from src.main.api.fixtures.user_fixture import *
 from src.main.api.fixtures.user_credit_fixture import *
-from src.main.api.fixtures.admin_credentials_fixture import *
 from src.main.api.fixtures.db_fixture import *
 import pytest
 from src.classes.api_manager import ApiManager
+from src.main.api.fixtures.user_credit_fixture import *
 
 import logging
 from typing import List, Any

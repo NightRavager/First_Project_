@@ -1,9 +1,7 @@
 from http import HTTPStatus
-
 from src.main.api.models.create_user_credit_request import CreateUserCreditRequest
 from src.main.api.models.create_user_response import CreateUserResponse
 from src.main.api.requsets.requester import Requester
-from src.main.api.models.create_user_request import CreateUserRequest
 import requests
 
 
