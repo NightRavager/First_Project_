@@ -1,4 +1,3 @@
-from enum import Enum
 from typing import Callable, Dict
 
 from src.main.api.foundation.endpoint import Endpoint

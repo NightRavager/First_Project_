@@ -1,9 +1,7 @@
 import uuid
 import random
 from typing import get_type_hints, Annotated, get_origin, get_args, Any
-
 import rstr
-
 from src.main.api.generators.creation_rule import CreationRule
 
 
@@ -22,7 +20,6 @@ class RandomModelGenerator:
                 for ann in annotations:
                     if isinstance(ann, CreationRule):
                         rule = ann
-
             if rule:
                 value = RandomModelGenerator._generate_from_regex(rule.regex, actual_type)
             else:

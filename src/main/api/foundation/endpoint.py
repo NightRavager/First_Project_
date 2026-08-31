@@ -1,13 +1,11 @@
 from dataclasses import dataclass
 from enum import Enum
 from typing import Optional, Type
-
-from src.main.api.models.account_deposit_request import AccountDepositRequest
+from src.main.api.models.account_deposit_request_valid import AccountDepositRequestValid
 from src.main.api.models.account_deposit_response import AccountDepositResponse
 from src.main.api.models.account_transfer_request import AccountTransferRequest
 from src.main.api.models.account_transfer_response import AccountTransferResponse
 from src.main.api.models.admin_users_delete_response import AdminUsersDeleteResponse
-from src.main.api.models.admin_users_response import AdminUsersResponse
 from src.main.api.models.base_model import BaseModel
 from src.main.api.models.create_account_response import CreateAccountResponse
 from src.main.api.models.create_creadit_response import CreateCreditResponse
@@ -72,7 +70,7 @@ class Endpoint(Enum):
     )
 
     ACCOUNT_DEPOSIT = EndpointConfiguration(
-        request_model=AccountDepositRequest,
+        request_model=AccountDepositRequestValid,
         url="/account/deposit",
         response_model=AccountDepositResponse
     )
@@ -81,12 +79,6 @@ class Endpoint(Enum):
         request_model=AccountTransferRequest,
         url="/account/transfer",
         response_model=AccountTransferResponse
-    )
-
-    ADMIN_USERS = EndpointConfiguration(
-        request_model=None,
-        url="/admin/users",
-        response_model=AdminUsersResponse
     )
 
     ADMIN_USERS_DELETE = EndpointConfiguration(

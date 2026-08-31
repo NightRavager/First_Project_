@@ -1,13 +1,9 @@
 from typing import Optional
-from urllib import response
-
 import requests
 from requests import Response
-
 from src.main.api.configs.config import Config
 from src.main.api.foundation.http_requester import HttpRequester
 from src.main.api.models.base_model import BaseModel
-from src.main.api.specs import request_specs
 import allure
 
 class CrudRequester(HttpRequester):
